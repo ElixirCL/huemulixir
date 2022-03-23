@@ -21,26 +21,27 @@ defmodule HuemulixirWeb.Game do
   # MARK: - Render
   def render(assigns) do
     ~F"""
-        <div class="flex flex-col items-center justify-center h-screen bg-black">
+        <div class="nes-container with-title is-centered" style={"margin-top": "10%", "background-color": "white"}>
 
             {#if @show_huemul? }
-                <div class="pb-8">
+                <div>
                     <Huemul id="huemul" advice={@advice}/>
                 </div>
-            
+
                 <div class="animate__animated animate__fadeInUpBig">
-                    <button :on-click="reset" class="bg-white p-4 font-medium text-3xl">Deseo más de su sabiduría</button>
+                    <button :on-click="reset" class="nes-btn is-success">Deseo más de su sabiduría</button>
                 </div>
 
             {#else}
-                <div class="animate__animated animate__lightSpeedInLeft text-white pb-8">
-                    <p class="p-4 font-medium leading-tight text-4xl">
+
+                <div class="animate__animated animate__lightSpeedInLeft">
+                    <p class="title" style={"margin-top": "10%"}>
                         Piensa tu pregunta. El gran <span class="text-blue-200">Huemul</span> te dará su respuesta.
                     </p>
                 </div>
 
                 <div class="animate__animated animate__fadeInUpBig">
-                    <button :on-click="show" class="bg-white p-4 font-medium text-3xl">¿Qué opina el gran Huemul?</button>
+                    <button :on-click="show" type="button" class="nes-btn is-primary">¿Qué opina el gran Huemul?</button>
                 </div>
             {/if}
         </div>
