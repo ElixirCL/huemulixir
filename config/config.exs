@@ -9,10 +9,13 @@ import Config
 
 # Configures the endpoint
 config :huemulixir, HuemulixirWeb.Endpoint,
-  url: [host: "localhost"],
+  http: [ip: {127, 0, 0, 1}, port: 0],
+  #url: [host: "localhost"],
   render_errors: [view: HuemulixirWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Huemulixir.PubSub,
-  live_view: [signing_salt: "Td7RMqir"]
+  live_view: [signing_salt: "Td7RMqir"],
+  secret_key_base: :crypto.strong_rand_bytes(32),
+  server: true
 
 # Configure esbuild (the version is required)
 config :esbuild,

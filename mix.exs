@@ -49,7 +49,8 @@ defmodule Huemulixir.MixProject do
       {:surface, "~> 0.7.1"},
       {:surface_catalogue, "~> 0.4.0"},
       {:surface_formatter, "~> 0.6.0"},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:desktop, github: "elixir-desktop/desktop", tag: "v1.4.0"},
     ]
   end
 

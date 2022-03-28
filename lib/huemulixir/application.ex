@@ -7,15 +7,29 @@ defmodule Huemulixir.Application do
 
   @impl true
   def start(_type, _args) do
+
+    Desktop.identify_default_locale(HuemulixirWeb.Gettext)
+
     children = [
       # Start the Telemetry supervisor
       HuemulixirWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Huemulixir.PubSub},
       # Start the Endpoint (http/https)
-      HuemulixirWeb.Endpoint
+      HuemulixirWeb.Endpoint,
       # Start a worker by calling: Huemulixir.Worker.start_link(arg)
       # {Huemulixir.Worker, arg}
+
+      # Start Desktop
+      {
+        Desktop.Window, [
+          app: Mix.Project.config()[:app],
+          id: HuemulixirWindow,
+          url: &HuemulixirWeb.Endpoint.url/0,
+          title: "Huemulixir",
+          size: {800, 600}
+        ]
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
